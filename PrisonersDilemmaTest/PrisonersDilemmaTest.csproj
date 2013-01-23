@@ -50,6 +50,7 @@
     </CodeAnalysisDependentAssemblyPaths>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContestantTests.cs" />
     <Compile Include="PDTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
