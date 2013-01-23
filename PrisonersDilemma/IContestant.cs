@@ -7,9 +7,8 @@ namespace PrisonersDilemmaServer {
     int RoundScore { get; }
     IPDStrategy Strategy { get; }
     int TotalScore { get; }
-
-    StrategyChoice Start();
-    StrategyChoice Step(StrategyChoice opponentChoice);
+    
+    StrategyChoice Step(StrategyChoice? opponentChoice);
     void AddScore(int value);
   }
 }

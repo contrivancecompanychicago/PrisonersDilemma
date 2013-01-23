@@ -20,18 +20,13 @@ namespace PrisonersDilemmaServer {
       LastChoice = null;
     }
 
-    public StrategyChoice Start() {
+    public StrategyChoice Step(StrategyChoice? opponentChoice) {
       if (Strategy == null) throw new NullReferenceException("Strategy not set");
-      LastChoice = Strategy.Start();
+      
+      LastChoice = !opponentChoice.HasValue ? Strategy.Start() : Strategy.Step(opponentChoice.Value);
       return LastChoice.Value;
     }
-
-    public StrategyChoice Step(StrategyChoice opponentChoice) {
-      if (Strategy == null) throw new NullReferenceException("Strategy not set");
-      LastChoice = Strategy.Step(opponentChoice);
-      return LastChoice.Value;
-    }
-
+    
     public void AddScore(int inputScore) {
       roundScore = inputScore;
       totalScore += inputScore;

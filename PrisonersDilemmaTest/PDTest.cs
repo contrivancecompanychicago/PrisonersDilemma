@@ -7,38 +7,32 @@ namespace PrisonersDilemmaTest {
   public class PDTest {
 
     private PrisonersDilemma pd;
-    private int scoreAmount;
 
     [TestInitialize]
     public void Initialize() {
       var contestant1 = new Contestant("Nice",new Nice());
       var contestant2 = new Contestant("Mean",new Mean());
-      scoreAmount = 1;
 
-      pd = new PrisonersDilemma(contestant1, contestant2,scoreAmount);
+      pd = new PrisonersDilemma(contestant1, contestant2);
     }
-    
     
     [TestMethod]
     public void ConstructorTest() {
       Assert.IsNotNull(pd);
     }
-
-
+    
     [TestMethod]
     public void ServerSetUpTest() {
       var result = pd.ShowContestants();
       Assert.AreEqual("Contestand 1: Nice  Contestand 2: Mean", result);
     }
     
-
     [TestMethod]
     public void ServerStartTest() {
       var result = pd.Step();
       Assert.AreEqual("C,D 0,2 0,2", result);
     }
     
-
     [TestMethod]
     public void ServerStepTest() {
       var result = pd.Step();
@@ -81,27 +75,25 @@ namespace PrisonersDilemmaTest {
         Assert.AreEqual(expectedResult, result);
       }
     }
-
-
+    
     [TestMethod]
     public void NiceVSNiceTest() {
       var contestant1 = new Contestant("Nice", new Nice());
       var contestant2 = new Contestant("Nice2", new Nice());
-      scoreAmount = 10;
 
-      pd = new PrisonersDilemma(contestant1, contestant2, scoreAmount);
+      pd = new PrisonersDilemma(contestant1, contestant2);
 
       var result = pd.Step();
-      Assert.AreEqual("C,C 10,10 10,10", result);
+      Assert.AreEqual("C,C 1,1 1,1", result);
 
       result = pd.Step();
-      Assert.AreEqual("C,C 10,10 20,20", result);
+      Assert.AreEqual("C,C 1,1 2,2", result);
 
       result = pd.Step();
-      Assert.AreEqual("C,C 10,10 30,30", result);
+      Assert.AreEqual("C,C 1,1 3,3", result);
 
       result = pd.Step();
-      Assert.AreEqual("C,C 10,10 40,40", result);
+      Assert.AreEqual("C,C 1,1 4,4", result);
     }
 
   }

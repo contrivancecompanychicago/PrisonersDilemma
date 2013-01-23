@@ -23,7 +23,7 @@ namespace PrisonersDilemmaServer {
       //new Contestant("titfortat", new TitForTat());
       new Contestant("RNG", new RandomChoice());
 
-      var pd = new PrisonersDilemma(contestant1, contestant2, 1);
+      var pd = new PrisonersDilemma(contestant1, contestant2);
 
       Console.WriteLine(pd.ShowContestants());
 
